@@ -1,8 +1,8 @@
 Go 1.8 Release Party
-YOUR MEETUP
+Hyderabad Gophers!
 16 Feb 2017
 
-YOUR MEETUP
+Hyderabad Gophers
 
 * License and Materials
 
@@ -44,9 +44,9 @@ So, what's happened in the last six months since Go 1.7?
 
 As always, the changes are so general and varied that precise statements about performance are difficult to make.
 
-Most programs should run a bit faster, due to speedups in the garbage collector and optimizations in the standard library.
+*Mostly*+ve* due to GC improvements and some performance patches to stdlib
 
-The new back end, based on static single assignment form (SSA), generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination.
+SSA back-end. Compact and more optimised code!
 
 - The new back end reduces the CPU time required by our benchmark programs by 20-30% on 32-bit ARM systems.
 - For 64-bit x86 systems, which already used the SSA back end in Go 1.7, the gains are a more modest 0-10%.
@@ -56,7 +56,7 @@ The new back end, based on static single assignment form (SSA), generates more c
 
 * Garbage Collector
 
-Garbage collection pauses should be significantly shorter than they were in Go 1.7, usually under 100 microseconds and often as low as 10 microseconds.
+Garbage collection pauses should be significantly shorter than they were in Go 1.7, usually under 100 microseconds and often as low as *10*microseconds.*
 
 .link https://talks.golang.org/2017/state-of-go.slide#34 Garbage Collector Improvements Over Time (ht. @francesc)
 
@@ -95,13 +95,13 @@ This is the result of merging two defers on the standard cgo calling path.
 
 .link https://crawshaw.io/blog/go1.8-cgo Less cgo overhead in Go 1.8
 
-* Miscellaneous performance improvements
+# * Miscellaneous performance improvements
 
-Lots of small updates to the standard library.
+# Lots of small updates to the standard library.
 
-There have been optimizations to implementations in the `bytes`, `crypto/aes`, `crypto/cipher`, `crypto/elliptic`, `crypto/sha256`, `crypto/sha512`, `encoding/asn1`, `encoding/csv`, `encoding/hex`, `encoding/json`, `hash/crc32`, `image/color`, `image/draw`, `math`, `math/big`, `reflect`, `regexp`, `runtime`, `strconv`, `strings`, `syscall`, `text/template`, and `unicode/utf8` packages.
+# There have been optimizations to implementations in the `bytes`, `crypto/aes`, `crypto/cipher`, `crypto/elliptic`, `crypto/sha256`, `crypto/sha512`, `encoding/asn1`, `encoding/csv`, `encoding/hex`, `encoding/json`, `hash/crc32`, `image/color`, `image/draw`, `math`, `math/big`, `reflect`, `regexp`, `runtime`, `strconv`, `strings`, `syscall`, `text/template`, and `unicode/utf8` packages.
 
-.link http://beta.golang.org/doc/go1.8#library Go 1.8 Standard Library Changes
+# .link http://beta.golang.org/doc/go1.8#library Go 1.8 Standard Library Changes
 
 * Compiler changes
 
@@ -129,11 +129,11 @@ About a 12-15% improvement compared to Go 1.7
 
 .image https://dave.cheney.net/wp-content/uploads/2016/11/Screenshot-2016-11-19-at-08.57.10.png
 
-* Struct conversion
+# * Struct conversion
 
-When explicitly converting a value from one struct type to another, as of Go 1.8 the tags are ignored.
+# When explicitly converting a value from one struct type to another, as of Go 1.8 the tags are ignored.
 
-.play examples/struct_conversion.go /START OMIT/,/END OMIT/
+# .play examples/struct_conversion.go /START OMIT/,/END OMIT/
 
 * Ports
 
@@ -162,19 +162,19 @@ _No_ARMv5_builders_means_ARMv5_support_will_be_dropped_in_Go_1.9_.
 
 * Tool changes
 
-* go tool yacc
+# * go tool yacc
 
-The yacc tool (previously available by running “go tool yacc”) has been removed. As of Go 1.7 it was no longer used by the Go compiler.
+# The yacc tool (previously available by running “go tool yacc”) has been removed. As of Go 1.7 it was no longer used by the Go compiler.
 
-It has moved to the “tools” repository and is now available at golang.org/x/tools/cmd/goyacc.
+# It has moved to the “tools” repository and is now available at golang.org/x/tools/cmd/goyacc.
 
-* go tool asm
+# * go tool asm
 
-`go`tool`asm` now supports a flotilla of Intel and PPC vector instructions.
+# `go`tool`asm` now supports a flotilla of Intel and PPC vector instructions.
 
-For 64-bit x86 systems, the following instructions have been added: `VBROADCASTSD`, `BROADCASTSS`, `MOVDDUP`, `MOVSHDUP`, `MOVSLDUP`, `VMOVDDUP`, `VMOVSHDUP`, and `VMOVSLDUP`.
+# For 64-bit x86 systems, the following instructions have been added: `VBROADCASTSD`, `BROADCASTSS`, `MOVDDUP`, `MOVSHDUP`, `MOVSLDUP`, `VMOVDDUP`, `VMOVSHDUP`, and `VMOVSLDUP`.
 
-For 64-bit PPC systems, the common vector scalar instructions have been added: `LXS`, `LXSDX`, `LXSI`, `LXSIWAX`, `LXSIWZX`, `LXV`, `LXVD2X`, `LXVDSX`, `LXVW4X`, `MFVSR`, `MFVSRD`, `MFVSRWZ`, `MTVSR`, `MTVSRD`, `MTVSRWA`, `MTVSRWZ`, `STXS`, `STXSDX`, `STXSI`, `STXSIWX`, `STXV`, `STXVD2X`, `STXVW4X`, `XSCV`, `XSCVDPSP`, `XSCVDPSPN`, `XSCVDPSXDS`, `XSCVDPSXWS`, `XSCVDPUXDS`, `XSCVDPUXWS`, `XSCVSPDP`, `XSCVSPDPN`, `XSCVSXDDP`, `XSCVSXDSP`, `XSCVUXDDP`, `XSCVUXDSP`, `XSCVX`, `XSCVXP`, `XVCV`, `XVCVDPSP`, `XVCVDPSXDS`, `XVCVDPSXWS`, `XVCVDPUXDS`, `XVCVDPUXWS`, `XVCVSPDP`, `XVCVSPSXDS`, `XVCVSPSXWS`, `XVCVSPUXDS`, `XVCVSPUXWS`, `XVCVSXDDP`, `XVCVSXDSP`, `XVCVSXWDP`, `XVCVSXWSP`, `XVCVUXDDP`, `XVCVUXDSP`, `XVCVUXWDP`, `XVCVUXWSP`, `XVCVX`, `XVCVXP`, `XXLAND`, `XXLANDC`, `XXLANDQ`, `XXLEQV`, `XXLNAND`, `XXLNOR`, `XXLOR`, `XXLORC`, `XXLORQ`, `XXLXOR`, `XXMRG`, `XXMRGHW`, `XXMRGLW`, `XXPERM`, `XXPERMDI`, `XXSEL`, `XXSI`, `XXSLDWI`, `XXSPLT`, and `XXSPLTW`.
+# For 64-bit PPC systems, the common vector scalar instructions have been added: `LXS`, `LXSDX`, `LXSI`, `LXSIWAX`, `LXSIWZX`, `LXV`, `LXVD2X`, `LXVDSX`, `LXVW4X`, `MFVSR`, `MFVSRD`, `MFVSRWZ`, `MTVSR`, `MTVSRD`, `MTVSRWA`, `MTVSRWZ`, `STXS`, `STXSDX`, `STXSI`, `STXSIWX`, `STXV`, `STXVD2X`, `STXVW4X`, `XSCV`, `XSCVDPSP`, `XSCVDPSPN`, `XSCVDPSXDS`, `XSCVDPSXWS`, `XSCVDPUXDS`, `XSCVDPUXWS`, `XSCVSPDP`, `XSCVSPDPN`, `XSCVSXDDP`, `XSCVSXDSP`, `XSCVUXDDP`, `XSCVUXDSP`, `XSCVX`, `XSCVXP`, `XVCV`, `XVCVDPSP`, `XVCVDPSXDS`, `XVCVDPSXWS`, `XVCVDPUXDS`, `XVCVDPUXWS`, `XVCVSPDP`, `XVCVSPSXDS`, `XVCVSPSXWS`, `XVCVSPUXDS`, `XVCVSPUXWS`, `XVCVSXDDP`, `XVCVSXDSP`, `XVCVSXWDP`, `XVCVSXWSP`, `XVCVUXDDP`, `XVCVUXDSP`, `XVCVUXWDP`, `XVCVUXWSP`, `XVCVX`, `XVCVXP`, `XXLAND`, `XXLANDC`, `XXLANDQ`, `XXLEQV`, `XXLNAND`, `XXLNOR`, `XXLOR`, `XXLORC`, `XXLORQ`, `XXLXOR`, `XXMRG`, `XXMRGHW`, `XXMRGLW`, `XXPERM`, `XXPERMDI`, `XXSEL`, `XXSI`, `XXSLDWI`, `XXSPLT`, and `XXSPLTW`.
 
 * go tool trace
 
@@ -236,17 +236,17 @@ Profile your benchmarks and the contention on your mutexes.
 _Note_: For now `sync.RWMutex` is not profiled.
 
 
-TODO NEEDS EXAMPLE
+#TODO NEEDS EXAMPLE
 
-_note_: Due to an oversight this only works with `sync.Mutex`, not `sync.RWMutex`, this oversight will be addressed early in Go 1.9.
+#_note_: Due to an oversight this only works with `sync.Mutex`, not `sync.RWMutex`, this oversight will be addressed early in Go 1.9.
 
-.link https://github.com/golang/go/issues/18496 runtime: contended mutex profiling doesn't work for sync.RWMutex
+#.link https://github.com/golang/go/issues/18496 runtime: contended mutex profiling doesn't work for sync.RWMutex
 
 * Homework
 
-Mutex profile is not supported in, [[pkg/profile][https://github.com/pkg/profile]]. yet ...
+#Mutex profile is not supported in, [[pkg/profile][https://github.com/pkg/profile]]. yet ...
 
-Who wants to be the first to send me a PR?
+#Who wants to be the first to send me a PR?
 
 * Plugins
 
@@ -342,7 +342,8 @@ After being rolled back before the Go 1.8 freeze, aliases are being re-proposed 
 
 .link https://golang.org/design/18130-type-alias
 
-TODO SHOW EXAMPLES
+.code examples/alias.go
+
 
 * Faster / cheaper runtime.MemStats
 
@@ -370,7 +371,7 @@ Go has used epoll/kqueue/poll/select for _network_sockets_ for years.
 
 Reads/Writes to other file descriptors have traditionally consumed an OS thread during operation
 
-Recently Ian Lance Taylor landed a refactor that broken our the `runtime` polling subsystem and extended to work for the rest of the `os` package.
+Recently Ian Lance Taylor landed a refactor that broke out the `runtime` polling subsystem and extended to work for the rest of the `os` package.
 
 .link https://go-review.googlesource.com/#/c/36799/ net: refactor poller into new internal/poll package
 .link https://go-review.googlesource.com/#/c/36800/ os: use poller for file I/O 
